@@ -1,0 +1,10 @@
+apiVersion: "pipeline.k-pipe.cloud/v1"
+kind: "PipelineSchedule"
+metadata:
+  name: "daily-schedule"
+spec:
+  pipelineName: "pythagoras"
+  schedules:
+    - cronSpec: "0 12 * * *"
+      versionPattern: "main"
+      timeZone: "CET"

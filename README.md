@@ -3,6 +3,9 @@
 A simple demonstration ETL pipeline reading data from a google sheet, 
 computing a simple transformation and sending result per mail.
 
+This demo is described in more detail in 
+[this medium article](https://medium.com/@jan.kneissler_30195/kubernetes-was-built-for-herding-flocks-of-services-we-make-it-tame-packs-of-jobs-0035dad7a8f0).
+
 ## How to use
 
 ### Start a kubernetes cluster

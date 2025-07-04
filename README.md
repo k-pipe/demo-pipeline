@@ -16,7 +16,7 @@ kind create cluster
 ### Install kubernetes extension 
 
 We are using the helm chart of the k-pipe kubernetes extension, which allows running pipelines
-natively on kubernetes, available from here: https://k-pipe.github.io/helm/
+natively on kubernetes, available from here: [https://k-pipe.github.io/helm/](https://k-pipe.github.io/helm/)
 
 ```
 helm repo add k-pipe https://k-pipe.github.io/helm

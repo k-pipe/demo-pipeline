@@ -1,2 +1,7 @@
 # demo-pipeline
-A simple demonstration pipeline reading data from a big query table, computing a simple transformation and writing data to a Google sheet
+
+A simple demonstration ETL pipeline reading data from a google sheet, computing a simple transformation and sending result per mail.
+
+## How to use
+
+TODO

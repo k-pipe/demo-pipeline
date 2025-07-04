@@ -1,0 +1,9 @@
+apiVersion: "pipeline.k-pipe.cloud/v1"
+kind: "PipelineRun"
+metadata:
+  name: "testrun"
+spec:
+  pipelineName: "pythagoras"
+  versionPattern: "main"
+
+

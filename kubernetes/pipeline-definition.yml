@@ -1,0 +1,50 @@
+apiVersion: "pipeline.k-pipe.cloud/v1"
+kind: "PipelineDefinition"
+metadata:
+  name: "pythagoras-main"
+spec:
+  pipelineName: "pythagoras"
+  version: "main"
+  description: "This is a pipeline to find rectangular triangles."
+  pipelineStructure:
+    jobSteps:
+      - id: "read"
+        image:
+          name: "read-sheet:main"
+        config:
+          workbookId: "1MYBHYEeexCpQ7mOyRGsuSKN3ExpPOn20ylJlj5b0Eng" # put your own google sheet ID here!
+          sheet: 0
+      - id: "compute"
+        image:
+          name: "compute:main"
+      - id: "write"
+        image:
+          name: "send-mail:main"
+        config:
+          recipientEmail: "j@kneissler.com"
+          mailSubject: "Pythagoras Test Results"
+          senderEmail: "test@kneissler.com" # put senders mail account here!
+          smtpServer: "smtp.strato.de" # put correct mail server of the sender here!
+          smtpPort: 587 # put correct smtp port of used mail server here!
+        secrets:
+          # email password is not stored openly in the configuration
+          # you have login to your kubernetes cluster and create a kubernetes secret like this:
+          # kubectl create secret generic credentials --from-literal=mailPassword=XYZ
+          - envVar: "EMAIL_PASSWORD"
+            secret: "credentials"
+            key: "mailPassword"
+    pipes:
+      - filename: "data.jsonl"
+        from:
+          stepId: "read"
+          name: "output"
+        to:
+          stepId: "compute"
+          name: "input"
+      - filename: "data.jsonl"
+        from:
+          stepId: "compute"
+          name: "output"
+        to:
+          stepId: "write"
+          name: "input"

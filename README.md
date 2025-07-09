@@ -57,6 +57,7 @@ the [shell script in folder docker](docker/build.sh):
 ```
 cd docker
 sh build.sh
+cd ..
 ```
 
 ### Run the pipeline
@@ -68,6 +69,13 @@ To start a pipeline run you can apply the [pipeline run manifest](kubernetes/pip
 kubectl apply -f kubernetes/pipeline-run.yml
 ```
 
+You can observe the pods being executed:
+
+```
+kubectl get pods -w
+```
+
+(terminate the command pressing `CTRL-c')
 
 ### Schedule regular pipeline runs
 

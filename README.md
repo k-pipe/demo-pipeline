@@ -10,7 +10,7 @@ This demo is described in more detail in
 
 ### Start a kubernetes cluster
 
-We propose using `kind` (you will need to have kind and docker desktop installed):
+We propose using `kind` (you need both `Kind` and `DockerDesktop` installed on your local machine for that):
 
 ```
 kind create cluster
@@ -31,10 +31,10 @@ helm install k-pipe k-pipe/operator -n k-pipe
 
 You should first adapt some settings in the [pipeline definition manifest](kubernetes/pipeline-definition.yml):
  * in the config of the `read` step, you may put the ID of your own input Google sheet (not required, you may also 
-   keep the one that is given there, we have made it publicly readable, but if you want to edit the Google sheet,)
-   you should [setup your own](https://workspace.google.com/products/sheets/)
- * change the sender's mail credentials: put server, port and user name that you would like to use for sending mails
-   in the configuration of the `write` step.
+   keep the one that is given there, we have made it publicly readable, but if you want to edit the Google sheet,
+   you should [setup your own](https://workspace.google.com/products/sheets/))
+ * change the sender's mail credentials: put server, port and user name of the smtp server that you would like to use 
+   for sending out mails (in the configuration of the `write` step).
 
 Then you can apply the manifest:
 
